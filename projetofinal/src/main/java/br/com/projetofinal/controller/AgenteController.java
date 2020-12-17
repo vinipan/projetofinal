@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projetofinal.beans.Agente;
-
+import br.com.projetofinal.beans.Artista;
 import br.com.projetofinal.dao.AgenteDAO;
 
 @RestController
@@ -30,6 +31,16 @@ public class AgenteController {
 			return ResponseEntity.status(404).build();
 		}
 		return ResponseEntity.ok(lista);		
+	}
+	
+	@GetMapping("/agentes/{cod}")
+	public ResponseEntity<Agente> getAgente(@PathVariable int cod) {
+		Agente objeto = dao.findById(cod).orElse(null);
+		if (objeto == null) {
+			return ResponseEntity.status(404).build();
+		}
+		return ResponseEntity.ok(objeto);
+		
 	}
 	
 	/*

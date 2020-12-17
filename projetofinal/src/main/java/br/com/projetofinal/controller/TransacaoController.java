@@ -19,14 +19,25 @@ public class TransacaoController {
 	@Autowired
 	private TransacaoDAO dao;
 	
-	@GetMapping("/status/{cod}")
-	public ResponseEntity<List<String>> getStatus(@PathVariable int cod){
-		List<String> status = dao.findStatusByParceiro(cod);
-		if (status == null) {
-			return ResponseEntity.status(404).build();
-		}
-		return ResponseEntity.ok(status);
+	@GetMapping("/status/sucesso/{cod}")
+	public int getSucesso(@PathVariable int cod){
+		int status = dao.findSucessoByParceiro(cod);
+		return status;
 	}
+	
+	@GetMapping("/status/falha/{cod}")
+	public int getFalha(@PathVariable int cod){
+		int status = dao.findFalhaByParceiro(cod);
+		return status;
+	}
+	
+	@GetMapping("/status/fraude/{cod}")
+	public int getFraude(@PathVariable int cod){
+		int status = dao.findFraudeByParceiro(cod);
+		return status;
+	}
+	
+	
 	
 	
 	

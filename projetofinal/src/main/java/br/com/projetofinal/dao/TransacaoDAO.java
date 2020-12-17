@@ -14,5 +14,17 @@ public interface TransacaoDAO extends CrudRepository<Transacao, Integer> {
 			"WHERE ag_financeiro= :num " + 
 			"GROUP BY status", nativeQuery=true)
 	public List<String> findStatusByParceiro(@Param("num") int num);
+	
+	@Query(value= "SELECT COUNT(*) VOLUME FROM projetofinal.mtb310_transaction " + 
+			"WHERE ag_financeiro= :num AND status=0", nativeQuery=true)
+	public int findSucessoByParceiro(@Param("num") int num);
+	
+	@Query(value= "SELECT COUNT(*) VOLUME FROM projetofinal.mtb310_transaction " + 
+			"WHERE ag_financeiro= :num AND status=1", nativeQuery=true)
+	public int findFalhaByParceiro(@Param("num") int num);
+	
+	@Query(value= "SELECT COUNT(*) VOLUME FROM projetofinal.mtb310_transaction " + 
+			"WHERE ag_financeiro= :num AND status=2", nativeQuery=true)
+	public int findFraudeByParceiro(@Param("num") int num);
 
 }

@@ -46,6 +46,7 @@ INDEX VERSION 1.131+C:\Users\005976329\Desktop\turma12c\ws_projetofinal\.metadat
 2176226084.index
 1148937498.index
 1562533522.index
+2761472698.index
 2849350331.index
 1479365462.index
 1166440815.index
